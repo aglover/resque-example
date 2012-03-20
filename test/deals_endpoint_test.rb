@@ -1,7 +1,7 @@
-require 'bundler/setup'
+require "bundler/setup"
 require "test/unit"
 require "shoulda/context"
-require 'mongo'
+require "mongo"
 
 require File.expand_path(File.dirname(__FILE__) + '/../lib/deals_endpoint')
 
