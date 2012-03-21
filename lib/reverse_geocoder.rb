@@ -1,3 +1,4 @@
+require "bundler/setup"
 require "geocoder"
 require "mongo"
 
@@ -9,7 +10,7 @@ class ReverseGeocoder
     Geocoder::Configuration.timeout = 45
     doc = connection[:locations].find({:_id => BSON::ObjectId.from_string(document_id)}).first
     result = Geocoder.address([doc['latitude'], doc['longitude']])
-    connection[:locations].update({ :_id => BSON::ObjectId.from_string(document_id) }, {'$set' => { :address => result } } )   
+    connection[:locations].update({:_id => BSON::ObjectId.from_string(document_id)}, {'$set' => {:address => result}})   
   end
 
   def self.connection

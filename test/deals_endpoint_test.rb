@@ -2,7 +2,7 @@ require "bundler/setup"
 require "test/unit"
 require "shoulda/context"
 require "mongo"
-
+require "mocha"
 require File.expand_path(File.dirname(__FILE__) + '/../lib/deals_endpoint')
 
 class DealsEndpointTest < Test::Unit::TestCase
@@ -10,7 +10,8 @@ class DealsEndpointTest < Test::Unit::TestCase
   
   context  "DealsEndpoint should insert documents into a locations collection" do
     setup do
-      @mongodb = Mongo::Connection.new("localhost").db("local_development")            
+      @mongodb = Mongo::Connection.new("localhost").db("local_development")   
+      Resque.expects(:enqueue).at_least(1).with(any_parameters)
     end
     
     should "contain a document with 3 attributes" do
