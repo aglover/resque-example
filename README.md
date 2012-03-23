@@ -2,7 +2,9 @@
 
 ## Installation
 
-This is a simple project to demonstrate [Resque](https://github.com/defunkt/resque) -- to use it, simply run `bundle install` and then run `rake` (which runs the test task) so as to verify things are working.
+This is a simple project to demonstrate [Resque](https://github.com/defunkt/resque) -- to use it, simply run `bundle install` and then run `rake` (which runs the test task) so as to verify things are working. 
+
+This project uses RedisToGo.com for Redis and MongoHQ.com for MongoDB. The project is simple -- the `DealsEndpoint` class creates a record in MongoDB with raw coordinates. After inserting a document, a background job is queued -- this job, dubbed `ReverseGeocoder` takes the coordinates and reverse geocodes them into a valid address. The corresponding document in MongoDB is then updated. 
 
 To place some items on a queue, via the command line, run `bundle exec ruby lib/deals_endpoint.rb -a 39.1155556 -b -77.5638889 -d "Free Beer and beans and kids"` -- note, you can put any valid coordinate for `-a` or `-b` and the `-d` is just a description. Next, to pop what ever you've placed onto a queue, run in another command prompt: `bundle exec rake resque:work QUEUE=reverse_geocode`
 
