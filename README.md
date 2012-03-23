@@ -9,6 +9,8 @@ This is a simple project to demonstrate [Resque](https://github.com/defunkt/resq
 
 To place some items on a queue, via the command line, run `bundle exec ruby lib/deals_endpoint.rb -a 39.1155556 -b -77.5638889 -d "Free Beer and beans and kids"` -- note, you can put any valid coordinate for `-a` or `-b` and the `-d` is just a description. Next, to pop what ever you've placed onto a queue, run in another command prompt: `bundle exec rake resque:work QUEUE=reverse_geocode`
 
+To view Resque's web management interface, type `bundle exec resque-web -r redis://aglover:f92102d2d01e71cf33b3dd14de89d282@cod.redistogo.com:9910/ -F`
+
 # License
 
 The MIT License
