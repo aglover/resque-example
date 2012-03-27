@@ -3,7 +3,7 @@ require 'mongo'
 require 'resque'
 require File.expand_path(File.dirname(__FILE__) + '/reverse_geocoder') 
 
-# use these for command line to point to Leesburg
+
 # Latitude: 39.1155556
 # Longitude: -77.5638889
 

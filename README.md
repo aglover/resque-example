@@ -1,7 +1,8 @@
 # Rescue sample project 
 
-
 This project uses [RedisToGo.com](https://redistogo.com) for Redis and [MongoHQ.com](https://mongohq.com) for MongoDB. The project is simple -- the `DealsEndpoint` class creates a record in MongoDB with raw coordinates. After inserting a document, a background job is queued -- this job, dubbed `ReverseGeocoder` takes the coordinates and reverse geocodes them into a valid address. The corresponding document in MongoDB is then updated.
+
+A copy of the slides from [RubyNation 2012](http://www.rubynation.org/) can be found in the `presentation` directory.
 
 ## Installation
 
